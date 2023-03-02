@@ -14,6 +14,7 @@ class UserModel(BaseModel):
     username = Column(String(80), unique=True)
     password = Column(String(120), nullable=False)
     email = Column(String(140), unique=True)
+    telefono = Column(Integer, nullable=True, unique=True)
 
     rol_id = Column(Integer, ForeignKey('roles.id'))
     role = relationship('RoleModel', uselist=False, back_populates='users')
