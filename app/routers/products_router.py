@@ -1,8 +1,8 @@
 from app import api
 from flask import request
 from flask_restx import Resource
-#from app.controllers.category_controller import CategoryController
-#from app.schemas.category_schemas import CategoryRequestSchema
+from app.controllers.products_controller import ProductsController
+from app.schemas.products_schema import ProductRequestSchema
 from flask_jwt_extended import jwt_required
 
 products_ns = api.namespace(
@@ -11,22 +11,39 @@ products_ns = api.namespace(
     path = '/productos'
 )
 
+request_schema = ProductRequestSchema(products_ns)
+
 @products_ns.route('')
 class Products(Resource):
+    @products_ns.expect(request_schema.all())
     def get(self):
         '''Listado de Productos'''
-        pass
-    def post(self, query):
+        query = request_schema.all().parse_args()
+        controller = ProductsController()
+        return controller.all(query)
+
+    @products_ns.expect(request_schema.create(), validate=True)
+    def post(self):
         '''Creacion de Productos'''
-        pass
+        data = request_schema.create().parse_args()
+        controller = ProductsController()
+        return controller.create(data)
+
 @products_ns.route('/<int:id>')
 class ProductsById(Resource):
     def get(self, id):
         '''Traer Producto por ID'''
-        pass
+        controller = ProductsController()
+        return controller.getById(id)
+    
+    @products_ns.expect(request_schema.update(), validate=True)
     def put(self, id):
         '''Actualizar producto'''
-        pass
+        data = request_schema.update().parse_args()
+        controller = ProductsController()
+        return controller.update(id, data)
+    
     def delete(self, id):
         '''Inhabilitar Producto'''
-        pass
+        controller = ProductsController()
+        return controller.delete(id)

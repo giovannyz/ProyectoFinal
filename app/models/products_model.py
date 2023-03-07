@@ -1,5 +1,5 @@
 from app.models.base import BaseModel
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DateTime, Date
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Float, Date
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
@@ -9,7 +9,7 @@ class ProductsModel(BaseModel):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name =Column(String(120))
     description = Column(String(250))
-    precio = Column(Integer)
+    precio = Column(Float(precision=2))
     fecha = Column(Date, default=func.now())
     stock = Column(Integer)
     status = Column(Boolean, default=True)
