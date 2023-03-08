@@ -19,5 +19,8 @@ class ProductsModel(BaseModel):
     cat_id = Column(Integer, ForeignKey('category.id'))
     category = relationship('CategoryModel', uselist=False, back_populates='products')
     
+    # Relacion al modelo Shopping_cart
+    shopping_carts = relationship('ShoppingCartModel', uselist=True, back_populates='product')
+
     # Añadir un modelo que relacione la categoria independiente
     pedido_items = relationship('PedidoItemModel', uselist=True, back_populates='product')

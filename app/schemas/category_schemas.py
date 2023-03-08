@@ -30,5 +30,4 @@ class CategoryResponseSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = CategoryModel
         ordered = True
-
-    #products = Nested('ProductsResponseSchema', exclude=['role'], many=True)
+        

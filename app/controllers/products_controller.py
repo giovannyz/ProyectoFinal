@@ -24,7 +24,7 @@ class ProductsController:
                 }
 
             if query['category_id']:
-                filters['category_id'] = query['category_id']
+                filters['cat_id'] = query['category_id']
 
             if query['status'] is not None:
                 filters['status'] = bool(query['status'])

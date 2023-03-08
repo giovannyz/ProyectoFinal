@@ -50,4 +50,6 @@ class ProductsResponseSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = ProductsModel
         ordered = True
+    
+    category = Nested('CategoryResponseSchema', many=False)
         
