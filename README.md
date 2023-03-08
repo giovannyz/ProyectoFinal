@@ -15,3 +15,6 @@
   <li>Agregar front para empleados</li>
   <li>Inculir servicio de delivery</li>
 </ul>
+
+## Despliegue:
+https://giovannyz.github.io/Proyecto-FrontEnd/
