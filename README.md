@@ -18,3 +18,9 @@
 
 ## Despliegue:
 https://giovannyz.github.io/Proyecto-FrontEnd/
+
+## Integrantes:
+<ul>
+  <li>Huamancha Zamora Guiovany</li>
+  <li>Calderon Espinoza Bruno</li>
+</ul>
