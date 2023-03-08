@@ -83,5 +83,8 @@ class ShoppingCartController:
                 self.precioTotal += precio * quantity
         return {
             'data': data,
-            'precio Total': self.precioTotal
+            'precioTotal': self.precioTotal
         }
+
+    def _deleteShoppingCartToUser(self, user_id):
+        return self.model.where(user_id=user_id).all()

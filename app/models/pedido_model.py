@@ -11,9 +11,6 @@ class PedidoModel(BaseModel):
     date_shipping = Column(Date)
     total_price = Column(Float(precision=2))
 
-    payment_status = Column(String(255), nullable=True)
-    payment_detail = Column(String(255), nullable=True)
-
     status = Column(String, default='pending')
 
     # Relacion al usuario
