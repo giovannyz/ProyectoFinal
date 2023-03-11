@@ -13,10 +13,10 @@ category_ns = api.namespace(
 
 request_schema = CategoryRequestSchema(category_ns)
 
-@category_ns.doc(security='Bearer')
+
 @category_ns.route('')
 class Category(Resource):
-    @jwt_required()
+
     @category_ns.expect(request_schema.all())
     def get(self):
         '''Listar Categoria'''
@@ -24,6 +24,7 @@ class Category(Resource):
         controller = CategoryController()
         return controller.all(query)
 
+    @category_ns.doc(security='Bearer')
     @jwt_required()
     @category_ns.expect(request_schema.create(), validate=True)
     def post(self):

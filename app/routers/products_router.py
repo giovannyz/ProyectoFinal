@@ -13,10 +13,10 @@ products_ns = api.namespace(
 
 request_schema = ProductRequestSchema(products_ns)
 
-@products_ns.doc(security='Bearer')
+
 @products_ns.route('')
 class Products(Resource):
-    @jwt_required()
+  
     @products_ns.expect(request_schema.all())
     def get(self):
         '''Listado de Productos'''
@@ -24,6 +24,7 @@ class Products(Resource):
         controller = ProductsController()
         return controller.all(query)
 
+    @products_ns.doc(security='Bearer')
     @jwt_required()
     @products_ns.expect(request_schema.create(), validate=True)
     def post(self):
